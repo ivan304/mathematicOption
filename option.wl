@@ -9,3 +9,9 @@ puts[s_,e_,step_,p_,c_]:=put[#,p,c]&/@Range[s,e,step];
 
 
 findSimplePrice[s_,e_,step_,p_]:={Flatten[NSolve[Total[calls[s,e,step,p,x]]==0]][[1]][[2]],Flatten[NSolve[Total[puts[s,e,step,p,x]]==0]][[1]][[2]]};
+
+
+fcall[x_,p_,c_]:=c/;x<p;
+fcall[x_,p_,c_]:=x-p+c/;x>=p;
+fput[x_,p_,c_]:=c/;x>p;
+fput[x_,p_,c_]:=p-x+c/;x<=p;
